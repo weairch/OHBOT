@@ -3,7 +3,7 @@ const jwt=require("jsonwebtoken");
 require("dotenv").config();
 const {CLIENT_SECRET, CLIENT_ID}=process.env;
 const {findUser,insertUser}=require("../models/userModels");
-
+const {PORT}=process.env;
 
 const signIn=async function(req,res){
     try{
@@ -13,7 +13,7 @@ const signIn=async function(req,res){
         let formData=new URLSearchParams({
             "grant_type":"authorization_code",
             "code":code,
-            "redirect_uri":"http://localhost:3000/login",
+            "redirect_uri":"http://localhost:"+PORT+"/login",
             "client_id":CLIENT_ID,
             "client_secret":CLIENT_SECRET,
         });

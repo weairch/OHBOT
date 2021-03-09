@@ -30,6 +30,6 @@ app.get("/background",function(req,res){
 
 
 
-app.listen(PORT || "3000",function(){
+app.listen(PORT,function(){
     console.log("server is start!");
 });
