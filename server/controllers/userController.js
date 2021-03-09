@@ -13,7 +13,7 @@ const signIn=async function(req,res){
         let formData=new URLSearchParams({
             "grant_type":"authorization_code",
             "code":code,
-            "redirect_uri":"http://localhost:"+PORT+"/login",
+            "redirect_uri":"http://54.238.196.74:"+PORT+"/login",
             "client_id":CLIENT_ID,
             "client_secret":CLIENT_SECRET,
         });
