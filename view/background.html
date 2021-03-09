@@ -10,30 +10,52 @@
     <h1 id="name" class="name"></h1>
     <div id="stores" class="stores">
         <div>
-            <div>店家編號</div>
-            <div id="storeId" class="storeId"></div>
-        </div>
-
-        <div>
             <div>店家名稱</div>
             <div id="storeName" class="storeName"></div>
-        </div>
-
-        <div>
             <div>店家住址</div>
             <div id="storeAddress" class="storeAddress"></div>
-        </div>
-
-        <div>
             <div>店家電話</div>
             <div id="storePhone" class="storePhone"></div>
-        </div>
-
-        <div>
             <div>店家負責人</div>
             <div id="storeOwner" class="storeOwner"></div>
         </div>
+
+        <div>
+            <div id="" class="">新增店家</div>
+            <input type="text" name="insertStoreNameValue" id="insertStoreNameValue" placeholder="店家名稱">
+            <input type="text" name="insertStoreAddressValue" id="insertStoreAddressValue" placeholder="店家住址">
+            <input type="text" name="insertStorePhoneValue" id="insertStorePhoneValue" placeholder="店家電話">
+            <input type="text" name="insertStoreOwnerValue" id="insertStoreOwnerValue" placeholder="店家負責人">
+            <button onclick="insert()">新增</button>
+        </div>
+
+        <br>
+
+        <div>
+            <div>更改資料</div>
+            <select id="select">
+                <option value="">請選擇想要修改的選項</option>
+                <option value="店家名稱" id="updateStoreName">店家名稱</option>
+                <option value="店家住址" id="updateStoreAddress">店家住址</option>
+                <option value="店家電話" id="updateStorePhone">店家電話</option>
+                <option value="店家負責人" id="updateStoreOwner">店家負責人</option>
+            </select>
+            <input type="text" id="dataOld" name="dataOld" placeholder="請輸入原本內容">
+            <input type="text" id="dataNew" name="dataNew" placeholder="請輸入修改內容">
+            <button onclick="update()" >修改</button>
+        </div>
+
+
     </div>
+
+    <br>
+
+    <div>
+        <div>刪除店家</div>
+        <input type="text" id="deleteStoreName" placeholder="請輸入想刪除的店家名稱">
+        <button onclick="remove()">刪除</button>
+    </div>
+
 </body>
 </html>
 
@@ -48,71 +70,4 @@
     }
 </script>
 
-<script>
-    async function storeAll(){
-        let url="http://localhost:3000/api/1.0/store/stores"
-        let getStoreAll=await fetch(url)
-        let stores=await getStoreAll.json()
-        let storeId=document.getElementById("storeId")
-
-        for(let i=0;stores.length>i;i++){
-            let div=document.createElement("div")
-            div.innerHTML=stores[i]._id
-            storeId.appendChild(div)
-            console.log(stores.length)
-            console.log(stores[i+1])
-            if (stores.length == i+1){
-                let br=document.createElement("br")
-                storeId.appendChild(br)
-            }
-        }
-
-        let storeName=document.getElementById("storeName")
-        for(let i=0;stores.length>i;i++){
-            let div=document.createElement("div")
-            div.innerHTML=stores[i].店家名稱
-            storeName.appendChild(div)
-            if (stores.length == i+1){
-                let br=document.createElement("br")
-                storeName.appendChild(br)
-            }
-        }
-
-
-        let storeAddress=document.getElementById("storeAddress")
-        for(let i=0;stores.length>i;i++){
-            let div=document.createElement("div")
-            div.innerHTML=stores[i].店家住址
-            storeAddress.appendChild(div)
-            if (stores.length == i+1){
-                let br=document.createElement("br")
-                storeAddress.appendChild(br)
-            }
-        }
-
-        let storePhone=document.getElementById("storePhone")
-        for(let i=0;stores.length>i;i++){
-            let div=document.createElement("div")
-            div.innerHTML=stores[i].店家電話
-            storePhone.appendChild(div)
-            if (stores.length == i+1){
-                let br=document.createElement("br")
-                storePhone.appendChild(br)
-            }
-        }
-
-        let storeOwner=document.getElementById("storeOwner")
-        for(let i=0;stores.length>i;i++){
-            let div=document.createElement("div")
-            div.innerHTML=stores[i].店家負責人
-            storeOwner.appendChild(div)
-            if (stores.length == i+1){
-                let br=document.createElement("br")
-                storeOwner.appendChild(br)
-            }
-        }
-    }
-    
-    storeAll()
-
-</script>
+<script src="./stores.js"></script>

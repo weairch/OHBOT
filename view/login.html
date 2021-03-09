@@ -24,7 +24,7 @@
         body:JSON.stringify(data)
     };
     if (code){
-        fetch("http://localhost:3000/api/1.0/user/signin",config)
+        fetch("/api/1.0/user/signin",config)
         .then(function(res){
             return res.json()
         })

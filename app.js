@@ -15,6 +15,8 @@ let {insertMany,findAll,updateOne,deleteOne}=require("./server/models/mongodbCon
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("view"))
+
 
 app.use("/api/1.0",
     [

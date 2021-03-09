@@ -13,15 +13,13 @@ async function insertMany(collection,object){
     try{
         connect=await MongoClient.connect(url,{useUnifiedTopology: true})
         let db=connect.db(dbName).collection(collection)
-        let result=await db.insertMany(object)
-        if (result){
-            console.log("Insert Success")
-            return {message:"Insert Success"}
-        }
+        let result=await db.insertMany([object])
+        return result
+
     }
     catch(error){
         console.log(error)
-        return {message:"Insert fail"}
+        return error
     }
     finally{
         if (connect != null){
@@ -55,12 +53,11 @@ async function updateOne(collection,object,object2){
         connect=await MongoClient.connect(url,{useUnifiedTopology: true})
         let db=connect.db(dbName).collection(collection)
         let result=await db.updateOne(object,{$set:object2})
-        console.log(result)
-        return 
+        return result
     }
     catch(error){
         console.log(error)
-        return 
+        return error
     }
     finally{
         if (connect != null){
@@ -75,12 +72,11 @@ async function deleteOne(collection,object){
         connect=await MongoClient.connect(url,{useUnifiedTopology: true})
         let db=connect.db(dbName).collection(collection)
         let result=await db.deleteOne(object)
-        console.log(result)
-        return 
+        return result
     }
     catch(error){
         console.log(error)
-        return 
+        return error
     }
     finally{
         if (connect != null){
