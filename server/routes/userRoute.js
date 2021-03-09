@@ -2,7 +2,7 @@ const router=require("express").Router();
 
 const {
     signIn,
-}=require("../controllers/userController")
+}=require("../controllers/userController");
 
 
 router.route("/user/signin")

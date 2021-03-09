@@ -5,18 +5,18 @@ const {
     addStore,
     patchStore,
     deleteStore
-}=require("../controllers/storeController")
+}=require("../controllers/storeController");
 
 router.route("/store/getStores")
-    .get(stores)
+    .get(stores);
 
 router.route("/store/addStore")
-    .post(addStore)
+    .post(addStore);
 
 router.route("/store/updateStore")
-    .patch(patchStore)
+    .patch(patchStore);
 
 router.route("/store/deleteStore")
-    .delete(deleteStore)
+    .delete(deleteStore);
 
 module.exports=router;
