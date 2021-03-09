@@ -47,6 +47,25 @@ async function findAll(collection){
     }
 }
 
+async function findOne(collection,object){
+    let connect=null
+    try{
+        connect=await MongoClient.connect(url,{useUnifiedTopology: true})
+        let db=connect.db(dbName).collection(collection)
+        let result=await db.find(object).toArray()
+        return result
+    }
+    catch(error){
+        console.log(error)
+        return error
+    }
+    finally{
+        if (connect != null){
+            connect.close()
+        }
+    }
+}
+
 async function updateOne(collection,object,object2){
     let connect=null
     try{
@@ -88,6 +107,7 @@ async function deleteOne(collection,object){
 module.exports={
     insertMany,
     findAll,
+    findOne,
     updateOne,
     deleteOne
 }

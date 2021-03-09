@@ -87,7 +87,6 @@ const deleteStore=async function(req,res){
         if (!deleteTimes){
             res.status(400).json({message:"No corresponding resource delete"})
         }else{
-            
             res.status(200).json({message:"Success"})
         }
     }
