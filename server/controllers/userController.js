@@ -7,7 +7,6 @@ const {PORT}=process.env;
 
 const signIn=async function(req,res){
     try{
-        console.log(req.body);
         //拿取資料
         let {code}=req.body;
         let formData=new URLSearchParams({
@@ -26,9 +25,7 @@ const signIn=async function(req,res){
         };
         let getAccessToken=await fetch("https://api.line.me/oauth2/v2.1/token",getAccessTokenConfig);
         let {id_token}=await getAccessToken.json();
-        console.log(id_token);
         let profile=jwt.verify(id_token,CLIENT_SECRET);
-        console.log(profile);
         let {name,email}=profile;
 
         //確認是否資料庫有無使用者資料
